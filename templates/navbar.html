@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% block content %}
+<head>
+
+  <title>Hello, world!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light " >
+    <a class="mr-3" href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40px" height="40px" viewBox="0 0 256 256" version="1.1" preserveAspectRatio="xMidYMid">
+        <g>
+            <path d="M0,128.002 C0,180.416 31.518,225.444 76.619,245.241 C76.259,236.303 76.555,225.573 78.847,215.848 C81.308,205.457 95.317,146.1 95.317,146.1 C95.317,146.1 91.228,137.927 91.228,125.848 C91.228,106.879 102.222,92.712 115.914,92.712 C127.557,92.712 133.182,101.457 133.182,111.929 C133.182,123.633 125.717,141.14 121.878,157.355 C118.671,170.933 128.686,182.008 142.081,182.008 C166.333,182.008 182.667,150.859 182.667,113.953 C182.667,85.899 163.772,64.901 129.405,64.901 C90.577,64.901 66.388,93.857 66.388,126.201 C66.388,137.353 69.676,145.217 74.826,151.307 C77.194,154.104 77.523,155.229 76.666,158.441 C76.052,160.796 74.642,166.466 74.058,168.713 C73.206,171.955 70.579,173.114 67.649,171.917 C49.765,164.616 41.436,145.031 41.436,123.015 C41.436,86.654 72.102,43.054 132.918,43.054 C181.788,43.054 213.953,78.418 213.953,116.379 C213.953,166.592 186.037,204.105 144.887,204.105 C131.068,204.105 118.069,196.635 113.616,188.15 C113.616,188.15 106.185,217.642 104.611,223.337 C101.897,233.206 96.585,243.07 91.728,250.758 C103.24,254.156 115.401,256.007 128.005,256.007 C198.689,256.007 256.001,198.698 256.001,128.002 C256.001,57.309 198.689,0 128.005,0 C57.314,0 0,57.309 0,128.002 Z" fill="#CB1F27"/>
+        </g>
+    </svg>
+    </a>
+    <a class="navbar-brand" id="icon" href="/"><b>Home</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+     
+    </button>
+    {% if request.user.is_authenticated %}
+      
+    {% endif%}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        {% if request.user.is_authenticated %}
+        <li class="nav-item pt-4">
+         
+        </li>
+        <li class="nav-item active pt-3 ">
+          <a class="nav-link" href="/upload"><b>Create Post</b><span class="sr-only">(current)</span></a>
+          
+        </li>
+        <li class="nav-item active pt-4">
+         
+          <a id='dash' href="{% url 'user-profile' request.user.id %}"> Dashboard</a>
+        </li>
+        <li class="nav-item active pt-4 ml-3">
+         
+          <a id='dash' href="{% url 'update-user' %}"> Update Profile</a>
+        </li>
+        {% endif %}
+        <li class="nav-item active ">
+          <div class="container_nav">
+            <div id="search_box" class="d-flex search_container order-0 justify-content-center ">
+              <div class="search  ">
+                <input class="search_input2 border border-dark mx-2" type="text" name="" placeholder="Search here...">
+                <a href="#" class="search_icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg></a>
+              </div>
+            </div> 
+          </div>
+        </li>
+      
+       
+      </ul>
+      
+      {% if request.user.is_authenticated %}
+       <a href="{% url 'logout' %}"> <button type="button" id="logout" class="btn btn-outline-dark mx-2"><b>Log-Out</b></button></a>
+       {% else %}
+
+       <a href="/loginPage"> <button type="button" id="login" class="btn btn-outline mx-2"><b>Log-In</b></button></a>
+       
+       <a href="/register"> <button type="button" id="signup" class="btn btn-outline mx-2"><b>Sign-Up</b></button></a> 
+       {% endif %}
+
+      
+    </div>
+  </nav>
+ 
+</body>
+<script>
+  let logIn=document.getElementById('login');
+  let signIn=document.getElementById('signin');
+  logIn.addEventListener('click',()=>{
+    window.location.href=`${window.location.origin}/login`;
+  });
+
+  document.getElementById('icon').addEventListener('click',()=>{
+    window.location.href=`${window.location.origin}/`;
+  });
+
+</script>
+{% endblock content %}
+</html>

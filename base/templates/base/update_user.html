@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+{% block content %}
+<div id="center">
+    <form class="form" action="{% url 'update-user' %}" class="register_form" enctype="multipart/form-data"  method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class='my-2'>
+            <label ><b>{{field.label}}</b></label>
+            <br/>
+            <span class="input_field">{{field}}</span>
+        </div>
+        {% endfor %}
+        <button type="submit">update profile</button>
+    </form>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        
+        {% endfor %}
+        {% for i in form.errors %}
+           {{i}}
+        {% endfor %}
+        {% if form.errors %}
+          error!
+        {% endif %}
+    </ul>
+    {% endif %}
+
+</div>
+{% endblock content%}

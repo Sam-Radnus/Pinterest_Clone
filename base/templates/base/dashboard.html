@@ -1,0 +1,16 @@
+{% extends 'main.html'%}
+{% load static %}
+{% block content%}
+
+{% if request.user.is_authenticated %}
+<div id="profile">
+    <div id="profile_pic">
+   <img src="{{user.image.url}}" alt="img" height="200" width="200"/>
+</div>
+   <h1>Username:{{ user.username}}</h1>
+   <h1>Email:{{ user.email}}</h1>
+
+   
+</div>   
+{% endif %}   
+{% endblock content%}

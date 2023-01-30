@@ -1,0 +1,190 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="container center">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="panel panel-white post">
+                        <div class="post-heading">
+                            <div class="pull-left image">
+                                <img src="{{post.user.image.url}}" class="img-circle avatar" alt="user profile image">
+                            </div>
+                            <div class="pull-left meta">
+                                <div class="title h5">
+                                    <a href="{% url 'user-profile' post.user.id  %}"><b>{{post.user}}</b></a>
+                                    uploaded a photo.
+                                </div>
+                                <div class="stats">
+                                    {% if request.user.is_authenticated %}
+                                    
+                                   <a href="{% url 'like-post' post.id %}" class="btn btn-default stat-item">
+                                  {% if not saved %}
+                                   <button type="button" class="btn btn-primary" id="pin" data-toggle="modal"
+                                        data-target="#exampleModal">
+                                      
+                                         <b>
+                                            save
+                                         </b>
+        
+                                    </button>
+                                    {% else %}
+                                    <button type="button" class="btn btn-primary" id="pinned" data-toggle="modal"
+                                        data-target="#exampleModal">
+                                         
+                                         <b>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                                              </svg>
+                                            saved
+                                         </b>
+                                      
+                                    
+                                    </button>
+                                    {% endif %}
+                                </a>
+                                    <button type="button" id="share" class="btn btn-secondary" data-toggle="modal"
+                                        data-target="#exampleModal">
+                                        
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                                            <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                                          </svg>
+                                    </button>
+    
+                                    {% else %}
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" id="pin" data-toggle="modal"
+                                        data-target="#exampleModal">
+                                        <b>save</b>
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" id="share"   data-toggle="modal"
+                                        data-target="#exampleModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                                            <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                                          </svg>
+                                    </button>
+    
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Invalid Action</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                 <p>Please Login or Register In order to perform this Action</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <a href="/register"> <button type="button" id="signin" class="btn btn-primary mx-2">Register</button></a> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                               
+                                    {% endif %}
+                                 </div>
+                                <h6 class="text-muted time">uploaded on {{post.time_created}}</h6>
+                            </div>
+                        </div>
+                        <div class="post-image">
+                            <img src=""><img src="{{post.image.url}}" class="image" alt="image post">
+                        </div>
+                        <div class="post-description">
+                            <h4>{{post.name}}</h4>
+                            <p>{{post.caption}}</p>
+                           
+                        </div>
+                  
+                        <div class="post-footer">
+                            <div  class="input-group">
+                            <form action="{% url 'add-comment' post.user.id post.id %}" method="POST">
+                                {% csrf_token %}
+                                <div id="post_comment">
+                                <input class="post_comment_input" name="body" placeholder="Add a comment" type="text">
+                                {% if request.user.is_authenticated %}
+                                <span class="input-group-addon">
+                                    <a href="{% url 'add-comment' post.user.id post.id %}"><button class="btn btn-success">Done</button></a>
+                                </span>
+                                {% else %}
+                                
+                                   <button  onClick="not_Submit()" class="btn btn-success">Done</button>
+                                </span>
+                                {% endif %}
+                                </div>
+                    
+                                
+                         
+                            </form>   
+                            </div>
+                            <ul class="comments-list">
+                                {% for comment in comments %}
+                                <li class="comment">
+                                    <a class="pull-left" href="{% url 'user-profile' comment.user.id %}">
+                                        <img class="avatar" src="{{comment.user.image.url}}"
+                                            alt="avatar">
+                                    </a>
+                                    <div class="comment-body">
+                                        <div class="comment-heading">
+                                            <h4 class="user">{{comment.user}}</h4>
+                                            <h5 class="time">{{comment.time_created}}</h5>
+                                        </div>
+                                        <p>{{comment.text}}</p>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                                <!-- <li class="comment">
+                                    <a class="pull-left" href="javascript:void(0);">
+                                        <img class="avatar" src="https://bootdey.com/img/Content/avatar/avatar2.png"
+                                            alt="avatar">
+                                    </a>
+                                    <div class="comment-body">
+                                        <div class="comment-heading">
+                                            <h4 class="user">John Doe</h4>
+                                            <h5 class="time">3 minutes ago</h5>
+                                        </div>
+                                        <p>I think I might you this for one of my projects.</p>
+                                    </div>
+                                </li>
+                                <li class="comment">
+                                    <a class="pull-left" href="javascript:void(0);">
+                                        <img class="avatar" src="https://bootdey.com/img/Content/avatar/avatar4.png"
+                                            alt="avatar">
+                                    </a>
+                                    <div class="comment-body">
+                                        <div class="comment-heading">
+                                            <h4 class="user">John Doe</h4>
+                                            <h5 class="time">10 seconds ago</h5>
+                                        </div>
+                                        <p>Wow! This is gorgeous.</p>
+                                    </div>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        const not_Submit=(e)=>{
+              e.preventDefault();
+              alert("Error")
+        }
+    </script>
+</div>
+{% endblock content %}

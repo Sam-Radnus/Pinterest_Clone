@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% block content %}
+<div id="wrapper">
+    <div id="columns" >
+
+        {% for post in posts %}
+        <div class="pin2">
+            
+                <a href="{% url 'view-post' post.id %}">
+                    <img src="{{post.image.url}}" />
+                         
+                
+            </a>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock content %}

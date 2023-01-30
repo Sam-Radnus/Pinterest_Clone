@@ -1,0 +1,103 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>Posts</h1>
+<div class="container">
+{% for post in posts %}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+           
+            
+            <div class="row">
+                
+                <div class="col-sm-12">
+                    <div class="panel panel-white post">
+                        <div class="post-heading">
+                            <div class="pull-left image">
+                                <img src="{{post.user.image.url}}" class="img-circle avatar" alt="user profile image">
+                            </div>
+                            <div class="pull-left meta">
+                                <div class="title h5">
+                                    <a href="#"><b>{{post.user}}</b></a>
+                                    uploaded a photo.
+                                </div>
+                                <h6 class="text-muted time">5 seconds ago</h6>
+                            </div>
+                        </div>
+                        <div class="post-image">
+                            <img src=""><img src="{{post.image.url}}" class="image" alt="image post">
+                        </div>
+                        <div class="post-description">
+                            <h4>{{post.name}}</h4>
+                            <p>{{post.caption}}</p>
+                            <div class="stats">
+                                <a href="javascript:void(0);" class="btn btn-default stat-item">
+                                    <i class="fa fa-thumbs-up icon"></i>228
+                                </a>
+                                <a href="javascript:void(0);" class="btn btn-default stat-item">
+                                    <i class="fa fa-share icon"></i>128
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post-footer">
+                            <div class="input-group"> 
+                                <input class="form-control" placeholder="Add a comment" type="text">
+                                <span class="input-group-addon">
+                                    <a href="javascript:void(0);"><i class="fa fa-edit"></i></a>  
+                                </span>
+                            </div>
+                            <ul class="comments-list">
+                                <li class="comment">
+                                    <a class="pull-left" href="javascript:void(0);">
+                                        <img class="avatar" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
+                                    </a>
+                                    <div class="comment-body">
+                                        <div class="comment-heading">
+                                            <h4 class="user">John dOE</h4>
+                                            <h5 class="time">7 minutes ago</h5>
+                                        </div>
+                                        <p>I really love this picture. I really wish i could have been there.</p>
+                                    </div>
+                                </li>
+                                <li class="comment">
+                                    <a class="pull-left" href="javascript:void(0);">
+                                        <img class="avatar" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                                    </a>
+                                    <div class="comment-body">
+                                        <div class="comment-heading">
+                                            <h4 class="user">John Doe</h4>
+                                            <h5 class="time">3 minutes ago</h5>
+                                        </div>
+                                        <p>I think I might you this for one of my projects.</p>
+                                    </div>
+                                </li>
+                                <li class="comment">
+                                    <a class="pull-left" href="javascript:void(0);">
+                                        <img class="avatar" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="avatar">
+                                    </a>
+                                    <div class="comment-body">
+                                        <div class="comment-heading">
+                                            <h4 class="user">John Doe</h4>
+                                            <h5 class="time">10 seconds ago</h5>
+                                        </div>
+                                        <p>Wow! This is gorgeous.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+               
+              
+                
+            </div>
+            
+        </div>
+    
+    </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock content %}
